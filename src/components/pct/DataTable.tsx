@@ -34,7 +34,9 @@ export function DataTable({ records, onRowClick, selectedId }: Props) {
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase();
-    const base = s ? records.filter((r) => Object.values(r).some((v) => String(v).toLowerCase().includes(s))) : records;
+    const base = s
+      ? records.filter((r) => Object.values(r).some((v) => String(v).toLowerCase().includes(s)))
+      : records;
     const sorted = [...base].sort((a, b) => {
       const av = a[sortKey] ?? "";
       const bv = b[sortKey] ?? "";
@@ -56,24 +58,16 @@ export function DataTable({ records, onRowClick, selectedId }: Props) {
     }
   };
 
-  const exportCsv = () => {
-    const header = COLS.map((c) => c.label).join(";");
-    const lines = filtered.map((r) => COLS.map((c) => `"${String(r[c.key] ?? "").replace(/"/g, '""')}"`).join(";"));
-    const csv = "\uFEFF" + [header, ...lines].join("\n");
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "comunidades_pct_bahia.csv";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
   return (
-    <div className="rounded-lg border border-border bg-card shadow-sm">
+    <div
+      className="select-none rounded-lg border border-border bg-card shadow-sm"
+      onCopy={(event) => event.preventDefault()}
+      onCut={(event) => event.preventDefault()}
+    >
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border p-3">
         <h2 className="text-sm font-bold uppercase tracking-wide text-foreground">
-          Registros detalhados <span className="text-muted-foreground">({filtered.length.toLocaleString("pt-BR")})</span>
+          Registros detalhados{" "}
+          <span className="text-muted-foreground">({filtered.length.toLocaleString("pt-BR")})</span>
         </h2>
         <div className="flex items-center gap-2">
           <input
@@ -85,9 +79,6 @@ export function DataTable({ records, onRowClick, selectedId }: Props) {
             placeholder="Buscar na tabela…"
             className="rounded-md border border-input bg-background px-2.5 py-1.5 text-sm outline-none focus:ring-2 focus:ring-ring"
           />
-          <button onClick={exportCsv} className="rounded-md bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
-            Exportar CSV
-          </button>
         </div>
       </div>
 
@@ -115,7 +106,11 @@ export function DataTable({ records, onRowClick, selectedId }: Props) {
                 className={`cursor-pointer border-t border-border transition-colors hover:bg-accent/60 ${selectedId === r.id ? "bg-primary/10" : ""}`}
               >
                 {COLS.map((c) => (
-                  <td key={c.key} className="max-w-[200px] truncate whitespace-nowrap px-2.5 py-1.5 text-foreground" title={String(r[c.key] ?? "")}>
+                  <td
+                    key={c.key}
+                    className="max-w-[200px] truncate whitespace-nowrap px-2.5 py-1.5 text-foreground"
+                    title={String(r[c.key] ?? "")}
+                  >
                     {String(r[c.key] ?? "") || "—"}
                   </td>
                 ))}

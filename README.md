@@ -2,7 +2,7 @@
 
 Dashboard geoespacial interativo para visualizacao de Povos e Comunidades Tradicionais (PCT) no Estado da Bahia.
 
-O painel reune mapa interativo, filtros, KPIs, graficos dinamicos e tabela exportavel para analise territorial por municipio, RPGA/bacia, tipo de comunidade, fonte e tipo de dado espacial.
+O painel reune mapa interativo, filtros, KPIs, graficos dinamicos e tabela de consulta para analise territorial por municipio, RPGA/bacia, tipo de comunidade, fonte e tipo de dado espacial.
 
 © Valdenir Barbosa | Instituto Rios e Raízes | v1.0
 
@@ -106,7 +106,7 @@ Para atualizar logo ou faixa, substitua os arquivos mantendo os mesmos nomes.
 - `src/components/pct/FilterPanel.tsx`: filtros do painel.
 - `src/components/pct/KpiCards.tsx`: indicadores dinamicos.
 - `src/components/pct/ChartsPanel.tsx`: graficos dinamicos.
-- `src/components/pct/DataTable.tsx`: tabela, ordenacao, paginacao e exportacao CSV.
+- `src/components/pct/DataTable.tsx`: tabela de consulta, ordenacao e paginacao.
 - `src/components/pct/AboutDialog.tsx`: botao Sobre.
 
 ## Publicacao No GitHub Pages

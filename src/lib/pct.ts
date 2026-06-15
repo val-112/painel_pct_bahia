@@ -243,6 +243,7 @@ export const LAYER_COLORS = {
   rpga: "#c79a3a", // gold dashed outline
   poly: "#c2632f", // orange polygons
   ponto: "#1b4f7e", // deep blue points
+  municipio: "#6f7f88", // subtle municipal reference outline
 };
 
 export function colorForIndex(i: number): string {

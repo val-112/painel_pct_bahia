@@ -1,4 +1,11 @@
-import { choroBuckets, choroColor, rpgaChoroColor, LAYER_COLORS, type MetricKey, METRIC_LABEL } from "@/lib/pct";
+import {
+  choroBuckets,
+  choroColor,
+  rpgaChoroColor,
+  LAYER_COLORS,
+  type MetricKey,
+  METRIC_LABEL,
+} from "@/lib/pct";
 import type { MapMode } from "./LayerControl";
 
 interface Props {
@@ -9,6 +16,7 @@ interface Props {
   showRpga: boolean;
   showPoly: boolean;
   showPontos: boolean;
+  showMuniOutline: boolean;
 }
 
 function buildRanges(buckets: number[], colorFn: (v: number, b: number[]) => string) {
@@ -19,11 +27,23 @@ function buildRanges(buckets: number[], colorFn: (v: number, b: number[]) => str
     ranges.push({ color: colorFn(b, buckets), label: prev === b ? `${b}` : `${prev}–${b}` });
     prev = b + 1;
   });
-  ranges.push({ color: colorFn((buckets[buckets.length - 1] ?? 0) + 1, buckets), label: `${prev}+` });
+  ranges.push({
+    color: colorFn((buckets[buckets.length - 1] ?? 0) + 1, buckets),
+    label: `${prev}+`,
+  });
   return ranges;
 }
 
-export function Legend({ mode, maxVal, rpgaMax, metric, showRpga, showPoly, showPontos }: Props) {
+export function Legend({
+  mode,
+  maxVal,
+  rpgaMax,
+  metric,
+  showRpga,
+  showPoly,
+  showPontos,
+  showMuniOutline,
+}: Props) {
   const showMuniChoro = mode === "muni";
   const showRpgaChoro = mode === "rpga";
 
@@ -34,11 +54,16 @@ export function Legend({ mode, maxVal, rpgaMax, metric, showRpga, showPoly, show
     <div className="pointer-events-none absolute bottom-3 left-3 z-[500] max-w-[240px] rounded-lg border border-border bg-card/95 p-3 text-xs shadow-md backdrop-blur">
       {showMuniChoro && (
         <>
-          <div className="mb-1.5 font-semibold text-foreground">{METRIC_LABEL[metric]} por município</div>
+          <div className="mb-1.5 font-semibold text-foreground">
+            {METRIC_LABEL[metric]} por município
+          </div>
           <div className="space-y-1">
             {muniRanges.map((r, i) => (
               <div key={i} className="flex items-center gap-2">
-                <span className="inline-block h-3 w-5 rounded-sm border border-black/10" style={{ background: r.color }} />
+                <span
+                  className="inline-block h-3 w-5 rounded-sm border border-black/10"
+                  style={{ background: r.color }}
+                />
                 <span className="text-muted-foreground">{r.label}</span>
               </div>
             ))}
@@ -52,7 +77,10 @@ export function Legend({ mode, maxVal, rpgaMax, metric, showRpga, showPoly, show
           <div className="space-y-1">
             {rpgaRanges.map((r, i) => (
               <div key={i} className="flex items-center gap-2">
-                <span className="inline-block h-3 w-5 rounded-sm border border-black/10" style={{ background: r.color }} />
+                <span
+                  className="inline-block h-3 w-5 rounded-sm border border-black/10"
+                  style={{ background: r.color }}
+                />
                 <span className="text-muted-foreground">{r.label}</span>
               </div>
             ))}
@@ -60,8 +88,10 @@ export function Legend({ mode, maxVal, rpgaMax, metric, showRpga, showPoly, show
         </>
       )}
 
-      {(showRpga || showPoly || showPontos) && (
-        <div className={`space-y-1 ${showMuniChoro || showRpgaChoro ? "mt-2 border-t border-border pt-2" : ""}`}>
+      {(showRpga || showPoly || showPontos || showMuniOutline) && (
+        <div
+          className={`space-y-1 ${showMuniChoro || showRpgaChoro ? "mt-2 border-t border-border pt-2" : ""}`}
+        >
           {showPoly && (
             <div className="flex items-center gap-2">
               <span
@@ -73,13 +103,28 @@ export function Legend({ mode, maxVal, rpgaMax, metric, showRpga, showPoly, show
           )}
           {showPontos && (
             <div className="flex items-center gap-2">
-              <span className="inline-block h-3 w-3 rounded-full border border-white" style={{ background: LAYER_COLORS.ponto }} />
+              <span
+                className="inline-block h-3 w-3 rounded-full border border-white"
+                style={{ background: LAYER_COLORS.ponto }}
+              />
               <span className="text-muted-foreground">Ponto PCT</span>
+            </div>
+          )}
+          {showMuniOutline && (
+            <div className="flex items-center gap-2">
+              <span
+                className="inline-block h-3 w-5 rounded-sm border-2 bg-transparent"
+                style={{ borderColor: LAYER_COLORS.municipio }}
+              />
+              <span className="text-muted-foreground">Limite municipal</span>
             </div>
           )}
           {showRpga && (
             <div className="flex items-center gap-2">
-              <span className="inline-block h-3 w-5 rounded-sm border-2 bg-transparent" style={{ borderColor: LAYER_COLORS.rpga }} />
+              <span
+                className="inline-block h-3 w-5 rounded-sm border-2 bg-transparent"
+                style={{ borderColor: LAYER_COLORS.rpga }}
+              />
               <span className="text-muted-foreground">RPGA / bacia</span>
             </div>
           )}

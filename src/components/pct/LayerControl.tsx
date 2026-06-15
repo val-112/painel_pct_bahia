@@ -8,6 +8,7 @@ export interface LayerState {
   mode: MapMode;
   poly: boolean;
   pontos: boolean;
+  muniOutline: boolean;
   rpgaOutline: boolean;
   metric: MetricKey;
 }
@@ -17,10 +18,25 @@ interface Props {
   setLayers: (l: LayerState) => void;
 }
 
-function Toggle({ checked, onChange, label, dot }: { checked: boolean; onChange: (v: boolean) => void; label: string; dot: string }) {
+function Toggle({
+  checked,
+  onChange,
+  label,
+  dot,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  label: string;
+  dot: string;
+}) {
   return (
     <label className="flex cursor-pointer items-center gap-2 py-1 text-sm">
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="h-4 w-4 accent-[var(--color-primary)]" />
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="h-4 w-4 accent-[var(--color-primary)]"
+      />
       <span className="inline-block h-3 w-3 shrink-0 rounded-sm" style={{ background: dot }} />
       <span className="text-foreground">{label}</span>
     </label>
@@ -32,7 +48,7 @@ const MODES: Array<{ id: MapMode; label: string; icon: LucideIcon; hint: string 
     id: "geo",
     label: "Localização dos territórios",
     icon: MapPinned,
-    hint: "Mostra os pontos e polígonos das comunidades. Ligue/desligue pontos, polígonos e RPGAs/bacias.",
+    hint: "Mostra pontos, polígonos e camadas de referência territorial.",
   },
   {
     id: "muni",
@@ -50,7 +66,8 @@ const MODES: Array<{ id: MapMode; label: string; icon: LucideIcon; hint: string 
 
 export function LayerControl({ layers, setLayers }: Props) {
   const setMode = (id: MapMode) => {
-    if (id === "geo") setLayers({ ...layers, mode: "geo", poly: true, pontos: true });
+    if (id === "geo")
+      setLayers({ ...layers, mode: "geo", poly: true, pontos: true, muniOutline: true });
     else setLayers({ ...layers, mode: id });
   };
 
@@ -58,7 +75,7 @@ export function LayerControl({ layers, setLayers }: Props) {
     <div className="space-y-3">
       <h2 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-foreground">
         <Layers3 className="h-4 w-4 text-primary" />
-        Modos do mapa
+        Visualizar dados por
       </h2>
 
       <div className="grid grid-cols-1 gap-1.5">
@@ -89,16 +106,41 @@ export function LayerControl({ layers, setLayers }: Props) {
 
       {layers.mode === "geo" && (
         <div className="border-t border-border pt-2">
-          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Camadas</div>
-          <Toggle label="Polígonos PCT" dot="#c2632f" checked={layers.poly} onChange={(v) => setLayers({ ...layers, poly: v })} />
-          <Toggle label="Pontos PCT" dot="#1b4f7e" checked={layers.pontos} onChange={(v) => setLayers({ ...layers, pontos: v })} />
-          <Toggle label="RPGAs / Bacias" dot="#c79a3a" checked={layers.rpgaOutline} onChange={(v) => setLayers({ ...layers, rpgaOutline: v })} />
+          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            Camadas
+          </div>
+          <Toggle
+            label="Polígonos PCT"
+            dot="#c2632f"
+            checked={layers.poly}
+            onChange={(v) => setLayers({ ...layers, poly: v })}
+          />
+          <Toggle
+            label="Pontos PCT"
+            dot="#1b4f7e"
+            checked={layers.pontos}
+            onChange={(v) => setLayers({ ...layers, pontos: v })}
+          />
+          <Toggle
+            label="Limites municipais"
+            dot="#6f7f88"
+            checked={layers.muniOutline}
+            onChange={(v) => setLayers({ ...layers, muniOutline: v })}
+          />
+          <Toggle
+            label="RPGAs / Bacias"
+            dot="#c79a3a"
+            checked={layers.rpgaOutline}
+            onChange={(v) => setLayers({ ...layers, rpgaOutline: v })}
+          />
         </div>
       )}
 
       {layers.mode === "muni" && (
         <div className="border-t border-border pt-2">
-          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">Métrica</div>
+          <div className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            Métrica
+          </div>
           <select
             value={layers.metric}
             onChange={(e) => setLayers({ ...layers, metric: e.target.value as MetricKey })}

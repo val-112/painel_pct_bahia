@@ -1,5 +1,13 @@
 import { useEffect, useMemo } from "react";
-import { MapContainer, TileLayer, GeoJSON, CircleMarker, Popup, LayersControl, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  CircleMarker,
+  Popup,
+  LayersControl,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
@@ -34,7 +42,13 @@ const BAHIA_CENTER: [number, number] = [-12.5, -41.7];
 
 function metricVal(a: MuniAgg | undefined, m: MetricKey): number {
   if (!a) return 0;
-  return m === "total" ? a.total : m === "poligono" ? a.poligono : m === "ponto" ? a.ponto : a.municipioOnly;
+  return m === "total"
+    ? a.total
+    : m === "poligono"
+      ? a.poligono
+      : m === "ponto"
+        ? a.ponto
+        : a.municipioOnly;
 }
 
 function topEntries(rec: Record<string, number>, n = 3): string {
@@ -85,6 +99,7 @@ export function MapPanel({
   const showRpgaOutline = layers.mode === "geo" && layers.rpgaOutline;
   const showPoly = layers.mode === "geo" && layers.poly;
   const showPontos = layers.mode === "geo" && layers.pontos;
+  const showMuniOutline = layers.mode === "geo" && layers.muniOutline;
 
   const maxVal = useMemo(() => {
     let mx = 0;
@@ -102,10 +117,16 @@ export function MapPanel({
   const rpgaBuckets = useMemo(() => choroBuckets(rpgaMax), [rpgaMax]);
 
   const polyFC = useMemo(
-    () => ({ type: "FeatureCollection" as const, features: data.poligonal.features.filter((f) => filteredIds.has(f.properties?.id)) }),
+    () => ({
+      type: "FeatureCollection" as const,
+      features: data.poligonal.features.filter((f) => filteredIds.has(f.properties?.id)),
+    }),
     [data.poligonal, filteredIds],
   );
-  const ptFeatures = useMemo(() => data.pontos.features.filter((f) => filteredIds.has(f.properties?.id)), [data.pontos, filteredIds]);
+  const ptFeatures = useMemo(
+    () => data.pontos.features.filter((f) => filteredIds.has(f.properties?.id)),
+    [data.pontos, filteredIds],
+  );
 
   const muniStyle = (feature: any) => {
     const code = feature.properties.codigo;
@@ -118,10 +139,23 @@ export function MapPanel({
     };
   };
 
+  const muniOutlineStyle = (feature: any) => {
+    const code = feature.properties.codigo;
+    return {
+      color: selectedMuni === code ? "#3f4f58" : LAYER_COLORS.municipio,
+      weight: selectedMuni === code ? 1.4 : 0.7,
+      opacity: selectedMuni === code ? 0.9 : 0.55,
+      fill: false,
+      fillOpacity: 0,
+      interactive: false,
+    };
+  };
+
   const choroKey = `choro-${layers.metric}-${maxVal}-${filteredIds.size}-${selectedMuni}`;
   const rpgaChoroKey = `rpgachoro-${rpgaMax}-${filteredIds.size}-${selectedRpga}`;
   const rpgaKey = `rpga-${selectedRpga}`;
   const polyKey = `poly-${polyFC.features.length}`;
+  const muniOutlineKey = `muni-outline-${selectedMuni}`;
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-lg border border-border shadow-sm">
@@ -240,7 +274,14 @@ export function MapPanel({
           <GeoJSON
             key={polyKey}
             data={polyFC as any}
-            style={() => ({ color: LAYER_COLORS.poly, weight: 1, fillColor: LAYER_COLORS.poly, fillOpacity: 0.15 }) as any}
+            style={() =>
+              ({
+                color: LAYER_COLORS.poly,
+                weight: 1,
+                fillColor: LAYER_COLORS.poly,
+                fillOpacity: 0.15,
+              }) as any
+            }
             onEachFeature={(feature: any, layer: any) => {
               const p = feature.properties;
               layer.bindPopup(popupForFeature(p), { maxWidth: 280 });
@@ -257,7 +298,12 @@ export function MapPanel({
                 key={`pt-${f.properties?.id ?? i}`}
                 center={[c[1], c[0]]}
                 radius={5}
-                pathOptions={{ color: "#ffffff", weight: 1, fillColor: LAYER_COLORS.ponto, fillOpacity: 0.95 }}
+                pathOptions={{
+                  color: "#ffffff",
+                  weight: 1,
+                  fillColor: LAYER_COLORS.ponto,
+                  fillOpacity: 0.95,
+                }}
               >
                 <Popup>
                   <span dangerouslySetInnerHTML={{ __html: popupForFeature(f.properties) }} />
@@ -265,6 +311,16 @@ export function MapPanel({
               </CircleMarker>
             );
           })}
+
+        {/* Municipal reference boundaries */}
+        {showMuniOutline && (
+          <GeoJSON
+            key={muniOutlineKey}
+            data={data.municipios as any}
+            style={muniOutlineStyle as any}
+            interactive={false}
+          />
+        )}
 
         <FocusController data={data} focus={focus} />
       </MapContainer>
@@ -277,6 +333,7 @@ export function MapPanel({
         showRpga={showRpgaOutline}
         showPoly={showPoly}
         showPontos={showPontos}
+        showMuniOutline={showMuniOutline}
       />
 
       <div className="pointer-events-none absolute left-1/2 top-3 z-[500] max-w-[60%] -translate-x-1/2 rounded-md bg-card/90 px-3 py-1 text-center text-xs font-semibold text-foreground shadow backdrop-blur">

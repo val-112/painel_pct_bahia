@@ -56,6 +56,7 @@ function Dashboard() {
     mode: "geo",
     poly: true,
     pontos: true,
+    muniOutline: true,
     rpgaOutline: false,
     metric: "total",
   });

@@ -178,7 +178,7 @@ function Dashboard() {
                 </aside>
               )}
 
-              <section className="relative min-h-[60vh] flex-1 lg:h-[78vh]">
+              <section className="pct-map-section relative lg:flex-1">
                 <button
                   onClick={() => setSidebarOpen((o) => !o)}
                   className="absolute left-2 top-2 z-[500] rounded-md border border-border bg-card px-2.5 py-1 text-xs font-semibold text-foreground shadow hover:bg-accent"

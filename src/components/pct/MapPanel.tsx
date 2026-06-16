@@ -200,7 +200,7 @@ export function MapPanel({
   const muniOutlineKey = `muni-outline-${selectedMuni}`;
 
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-lg border border-border shadow-sm">
+    <div className="pct-map-shell relative h-full w-full overflow-hidden rounded-lg border border-border shadow-sm">
       <MapContainer center={BAHIA_CENTER} zoom={6} className="h-full w-full" preferCanvas>
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Mapa claro">

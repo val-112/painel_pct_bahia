@@ -148,7 +148,13 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family:
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
   }
 }
 
@@ -156,6 +162,23 @@
 .leaflet-container {
   font-family: inherit;
   background: oklch(0.94 0.01 200);
+}
+.pct-map-section {
+  height: 70vh;
+  min-height: 460px;
+}
+.pct-map-shell .leaflet-top.leaflet-left {
+  top: 2.75rem;
+}
+.pct-map-shell,
+.pct-map-shell .leaflet-container {
+  height: 100%;
+}
+@media (min-width: 64rem) {
+  .pct-map-section {
+    height: 78vh;
+    min-height: 0;
+  }
 }
 .leaflet-popup-content-wrapper {
   border-radius: var(--radius);

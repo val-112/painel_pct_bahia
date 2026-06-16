@@ -41,7 +41,7 @@ export function AboutDialog() {
           <p>
             A proposta é oferecer uma leitura integrada sobre a quantidade, diversidade e
             distribuição territorial dessas comunidades, permitindo a visualização por município,
-            RPGA/bacia, tipo de comunidade, fonte do dado e natureza da informação espacial
+            RPGA/bacia, segmento da comunidade, fonte do dado e natureza da informação espacial
             disponível.
           </p>
 

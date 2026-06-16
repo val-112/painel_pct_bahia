@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useMemo } from "react";
 import {
   MapContainer,
@@ -240,7 +241,7 @@ export function MapPanel({
                 <div class="row"><span>Com poligonal</span><span>${a?.poligono ?? 0}</span></div>
                 <div class="row"><span>Com ponto</span><span>${a?.ponto ?? 0}</span></div>
                 <div class="row"><span>Somente município</span><span>${a?.municipioOnly ?? 0}</span></div>
-                <div class="row"><span>Tipos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
+                <div class="row"><span>Segmentos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
                 <div class="row"><span>Fontes</span><span>${a ? topEntries(a.byFonte) : "—"}</span></div>
                 <div style="margin-top:6px;font-size:11px;color:#234e78;font-weight:600">Clique para filtrar este município</div></div>`;
               layer.bindPopup(html, { maxWidth: 280 });
@@ -265,7 +266,7 @@ export function MapPanel({
                 <div class="row"><span>Somente ponto</span><span>${a?.ponto ?? 0}</span></div>
                 <div class="row"><span>Somente município</span><span>${a?.municipioOnly ?? 0}</span></div>
                 <div class="row"><span>Municípios</span><span>${a?.municipios.size ?? 0}</span></div>
-                <div class="row"><span>Principais tipos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
+                <div class="row"><span>Principais segmentos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
                 <div style="margin-top:6px;font-size:11px;color:${LAYER_COLORS.territorio};font-weight:600">Clique para filtrar por este território</div></div>`;
               layer.bindPopup(html, { maxWidth: 280 });
             }}
@@ -297,7 +298,7 @@ export function MapPanel({
                 <div class="row"><span>Somente ponto</span><span>${a?.ponto ?? 0}</span></div>
                 <div class="row"><span>Somente município</span><span>${a?.municipioOnly ?? 0}</span></div>
                 <div class="row"><span>Municípios</span><span>${a?.municipios.size ?? 0}</span></div>
-                <div class="row"><span>Principais tipos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
+                <div class="row"><span>Principais segmentos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
                 <div style="margin-top:6px;font-size:11px;color:#bb5f29;font-weight:600">Clique para filtrar por esta RPGA</div></div>`;
               layer.bindPopup(html, { maxWidth: 280 });
             }}
@@ -452,7 +453,7 @@ function popupForFeature(p: any): string {
   if (!p || !p.nome) return `<div class="pct-popup"><h4>${p?.id ?? "Registro"}</h4></div>`;
   return `<div class="pct-popup"><h4>${p.nome}</h4>
     <div class="row"><span>ID-PCT</span><span>${p.id}</span></div>
-    <div class="row"><span>Tipo</span><span>${p.tipo}</span></div>
+    <div class="row"><span>Segmento</span><span>${p.tipo}</span></div>
     <div class="row"><span>Município</span><span>${p.municipio} (${p.codigo})</span></div>
     <div class="row"><span>RPGA</span><span>${p.rpga}</span></div>
     <div class="row"><span>Fonte</span><span>${p.fonte}</span></div>

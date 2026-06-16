@@ -24,7 +24,7 @@ const MapPanel = lazy(() =>
 );
 const publicUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 const bannerUrl = publicUrl("images/banner.png");
-const panelLogoUrl = publicUrl("images/painel-logo-header.png");
+const panelLogoUrl = publicUrl("images/painel-logo-title.png");
 const logoUrl = publicUrl("images/rioz-logo.jpg");
 
 export const Route = createFileRoute("/")({
@@ -107,13 +107,13 @@ function Dashboard() {
           aria-hidden
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-card/70 via-card/30 to-card/55" />
-        <div className="relative mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4 sm:py-5">
-          <h1 className="min-w-[320px] max-w-full flex-1">
+        <div className="absolute inset-0 bg-gradient-to-r from-card/55 via-card/15 to-card/45" />
+        <div className="relative mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-3 sm:py-4">
+          <h1 className="flex min-w-[260px] max-w-full flex-1 items-center">
             <img
               src={panelLogoUrl}
               alt="Painel de Comunidades Tradicionais da Bahia"
-              className="h-auto w-full max-w-[740px] object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.85)]"
+              className="h-auto max-h-24 w-auto max-w-full object-contain object-left drop-shadow-[0_2px_5px_rgba(255,255,255,0.75)] sm:max-h-28"
             />
           </h1>
 
@@ -155,7 +155,7 @@ function Dashboard() {
                 municipio: "Município",
                 territorio: "Território de identidade",
                 rpga: "RPGA",
-                tipo: "Tipo",
+                tipo: "Segmento",
                 fonte: "Fonte",
                 espacial: "Espacial",
                 search: "Busca",

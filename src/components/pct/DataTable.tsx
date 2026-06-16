@@ -11,21 +11,37 @@ type SortKey = keyof PctRecord;
 const COLS: Array<{ key: SortKey; label: string }> = [
   { key: "id", label: "ID-PCT" },
   { key: "nome", label: "Comunidade" },
-  { key: "tipo", label: "Tipo" },
+  { key: "tipo", label: "Segmento" },
   { key: "municipio", label: "Município" },
   { key: "territorio", label: "Território de identidade" },
   { key: "codigo", label: "Cód. Mun." },
   { key: "rpga", label: "RPGA" },
-  { key: "fonte", label: "Fonte" },
-  { key: "espacial", label: "Dado espacial" },
   { key: "numRegistro", label: "Nº registro" },
   { key: "dataRegistro", label: "Data" },
   { key: "maisDeUma", label: "+1 fonte" },
-  { key: "lat", label: "Lat" },
-  { key: "long", label: "Long" },
+  { key: "fonte", label: "Fonte" },
+  { key: "espacial", label: "Dado espacial" },
 ];
 
 const PAGE_SIZE = 25;
+
+function formatDateOnly(value: unknown): string {
+  const text = String(value ?? "").trim();
+  if (!text) return "";
+
+  const iso = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s].*)?$/);
+  if (iso) return `${iso[3]}/${iso[2]}/${iso[1]}`;
+
+  const br = text.match(/^(\d{1,2}\/\d{1,2}\/\d{2,4})(?:\s+\d{1,2}:\d{2}(?::\d{2})?.*)?$/);
+  if (br) return br[1];
+
+  return text.replace(/\s+\d{1,2}:\d{2}(?::\d{2})?.*$/, "");
+}
+
+function displayValue(record: PctRecord, key: SortKey): string {
+  if (key === "dataRegistro") return formatDateOnly(record[key]);
+  return String(record[key] ?? "").trim();
+}
 
 export function DataTable({ records, onRowClick, selectedId }: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("nome");
@@ -106,15 +122,18 @@ export function DataTable({ records, onRowClick, selectedId }: Props) {
                 onClick={() => onRowClick(r)}
                 className={`cursor-pointer border-t border-border transition-colors hover:bg-accent/60 ${selectedId === r.id ? "bg-primary/10" : ""}`}
               >
-                {COLS.map((c) => (
-                  <td
-                    key={c.key}
-                    className="max-w-[200px] truncate whitespace-nowrap px-2.5 py-1.5 text-foreground"
-                    title={String(r[c.key] ?? "")}
-                  >
-                    {String(r[c.key] ?? "") || "—"}
-                  </td>
-                ))}
+                {COLS.map((c) => {
+                  const value = displayValue(r, c.key);
+                  return (
+                    <td
+                      key={c.key}
+                      className="max-w-[200px] truncate whitespace-nowrap px-2.5 py-1.5 text-foreground"
+                      title={value}
+                    >
+                      {value || "—"}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
             {rows.length === 0 && (

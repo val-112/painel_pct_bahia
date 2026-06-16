@@ -2,7 +2,7 @@
 
 Dashboard geoespacial interativo para visualizacao de Povos e Comunidades Tradicionais (PCT) no Estado da Bahia.
 
-O painel reune mapa interativo, filtros, KPIs, graficos dinamicos e tabela de consulta para analise territorial por municipio, Territorio de Identidade, RPGA/bacia, tipo de comunidade, fonte e tipo de dado espacial.
+O painel reune mapa interativo, filtros, KPIs, graficos dinamicos e tabela de consulta para analise territorial por municipio, Territorio de Identidade, RPGA/bacia, segmento da comunidade, fonte e tipo de dado espacial.
 
 © Valdenir Barbosa | Instituto Rios e Raízes | v1.0
 
@@ -97,6 +97,7 @@ Arquivos atuais:
 - `banner.png`: faixa superior do painel.
 - `painel-logo.png`: identidade visual principal do painel.
 - `painel-logo-header.png`: identidade visual recortada para o cabecalho.
+- `painel-logo-title.png`: identidade visual sem fundo usada como titulo do painel.
 - `share-preview.png`: imagem de previsualizacao para compartilhamento do link.
 - `favicon.png`, `favicon-32.png`, `favicon-192.png`, `favicon-512.png`: icones do painel.
 - `rioz-logo.jpg`: logo do Instituto Rios e Raizes.

@@ -131,7 +131,7 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
         onChange={(v) => set({ rpga: v })}
       />
       <Select
-        label="Tipo de comunidade"
+        label="Segmento"
         value={filters.tipo}
         options={opts.tipos}
         onChange={(v) => set({ tipo: v })}

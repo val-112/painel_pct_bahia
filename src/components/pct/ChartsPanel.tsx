@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ResponsiveContainer, Cell, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from "recharts";
 import { BarChart3, Building2, Map as MapIcon, Waves } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -76,6 +76,7 @@ export function ChartsPanel({ records, filters, setFilters }: Props) {
       .slice(0, 8);
     return agg.map((a) => ({ name: a.nome, value: a.total }));
   }, [records]);
+  const tipoMax = Math.max(1, ...byTipo.map((r) => r.value));
   const rpgaMax = Math.max(1, ...topRpga.map((r) => r.value));
 
   const toggle = (patch: Partial<Filters>, current: string | null, value: string) =>
@@ -86,27 +87,57 @@ export function ChartsPanel({ records, filters, setFilters }: Props) {
 
   return (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {/* Tipos de comunidade — horizontal bars */}
-      <Card title="Tipos de comunidade" icon={BarChart3}>
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={byTipo} layout="vertical" margin={{ left: 8, right: 24 }}>
-            <XAxis type="number" tick={{ fontSize: 10 }} />
-            <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 10 }} />
-            <Tooltip cursor={{ fill: "rgba(0,0,0,0.04)" }} />
-            <Bar
-              dataKey="value"
-              radius={[0, 4, 4, 0]}
-              cursor="pointer"
-              onClick={(d: ChartDatum) =>
-                d.name !== "Outros" && toggle({ tipo: d.name }, filters.tipo, d.name)
-              }
-            >
-              {byTipo.map((d, i) => (
-                <Cell key={i} fill={d.name === "Outros" ? "#9aa6ad" : colorForIndex(i)} />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+      {/* Segmentos das comunidades — lollipop horizontal */}
+      <Card title="Segmentos das comunidades" icon={BarChart3}>
+        <div className="thin-scroll flex h-full flex-col justify-center gap-2 overflow-auto pr-1">
+          {byTipo.length === 0 && (
+            <p className="text-center text-xs text-muted-foreground">Sem dados.</p>
+          )}
+          {byTipo.map((r, i) => {
+            const active = filters.tipo === r.name;
+            const color = r.name === "Outros" ? "#9aa6ad" : colorForIndex(i);
+            const percent = (r.value / tipoMax) * 100;
+            const dotPosition = Math.max(2, percent);
+            return (
+              <button
+                key={r.name}
+                onClick={() =>
+                  r.name !== "Outros" && toggle({ tipo: r.name }, filters.tipo, r.name)
+                }
+                disabled={r.name === "Outros"}
+                className="group grid grid-cols-[minmax(110px,38%)_1fr_auto] items-center gap-2 text-left disabled:cursor-default"
+                title={r.name}
+              >
+                <span
+                  className={`truncate text-[11px] ${active ? "font-bold text-primary" : "text-foreground"}`}
+                >
+                  {r.name}
+                </span>
+                <span className="relative flex h-4 items-center">
+                  <span className="h-px w-full rounded bg-border" />
+                  <span
+                    className="absolute left-0 h-[3px] rounded-full transition-all"
+                    style={{
+                      width: `${percent}%`,
+                      background: color,
+                      opacity: active ? 1 : 0.72,
+                    }}
+                  />
+                  <span
+                    className="absolute h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-card shadow transition-all"
+                    style={{
+                      left: `${dotPosition}%`,
+                      background: active ? "var(--color-primary)" : color,
+                    }}
+                  />
+                </span>
+                <span className="w-7 text-right text-[11px] font-semibold tabular-nums text-muted-foreground">
+                  {r.value}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </Card>
 
       {/* Top municípios — horizontal bars */}

@@ -81,6 +81,11 @@ export function AboutDialog() {
             do município.
           </p>
           <p>
+            RPGA significa{" "}
+            <strong className="text-foreground">Região de Planejamento e Gestão das Águas</strong>,
+            uma unidade territorial usada para planejamento e gestão dos recursos hídricos.
+          </p>
+          <p>
             O painel busca apoiar análises territoriais, planejamento, pesquisa, gestão ambiental e
             ações voltadas à proteção dos Povos e Comunidades Tradicionais da Bahia.
           </p>

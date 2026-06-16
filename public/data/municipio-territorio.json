@@ -1,0 +1,1670 @@
+{
+  "2900108": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2900207": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2900306": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2900355": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2900405": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2900504": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2900603": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2900702": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2900801": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2900900": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2901007": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2901106": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2901155": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2901205": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2901304": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2901353": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2901403": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2901502": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2901601": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2901700": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2901809": {
+    "codigo": "16",
+    "nome": "Piemonte da Diamantina"
+  },
+  "2901908": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2901957": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2902005": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2902054": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2902104": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2902203": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2902252": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2902302": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2902401": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2902500": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2902609": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2902658": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2902708": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2902807": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2902906": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2903003": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2903102": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2903201": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2903235": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2903276": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2903300": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2903409": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2903508": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2903607": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2903706": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2903805": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2903904": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2903953": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2904001": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2904050": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2904100": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2904209": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2904308": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2904407": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2904506": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2904605": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2904704": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2904753": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2904803": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2904852": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2904902": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2905008": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2905107": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2905156": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2905206": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2905305": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2905404": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2905503": {
+    "codigo": "16",
+    "nome": "Piemonte da Diamantina"
+  },
+  "2905602": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2905701": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2905800": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2905909": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2906006": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2906105": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2906204": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2906303": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2906402": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2906501": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2906600": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2906709": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2906808": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2906824": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2906857": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2906873": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2906899": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2906907": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2907004": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2907103": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2907202": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2907301": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2907400": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2907509": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2907558": {
+    "codigo": "12",
+    "nome": "Bacia do Paramirim"
+  },
+  "2907608": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2907707": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2907806": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2907905": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2908002": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2908101": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2908200": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2908309": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2908408": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2908507": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2908606": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2908705": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2908804": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2908903": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2909000": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2909109": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2909208": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2909307": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2909406": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2909505": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2909604": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2909703": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2909802": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2909901": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2910008": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2910057": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2910107": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2910206": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2910305": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2910404": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2910503": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2910602": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2910701": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2910727": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2910750": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2910776": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2910800": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2910859": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2910909": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2911006": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2911105": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2911204": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2911253": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2911303": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2911402": {
+    "codigo": "24",
+    "nome": "Itaparica"
+  },
+  "2911501": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2911600": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2911659": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2911709": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2911808": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2911857": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2911907": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2912004": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2912103": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2912202": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2912301": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2912400": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2912509": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2912608": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2912707": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2912806": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2912905": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2913002": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2913101": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2913200": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2913309": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2913408": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2913457": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2913507": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2913606": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2913705": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2913804": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2913903": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2914000": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2914109": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2914208": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2914307": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2914406": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2914505": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2914604": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2914653": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2914703": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2914802": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2914901": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2915007": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2915106": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2915205": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2915304": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2915353": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2915403": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2915502": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2915601": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2915700": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2915809": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2915908": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2916005": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2916104": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2916203": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2916302": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2916401": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2916500": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2916609": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2916708": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2916807": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2916856": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2916906": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2917003": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2917102": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2917201": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2917300": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2917334": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2917359": {
+    "codigo": "23",
+    "nome": "Bacia do Rio Corrente"
+  },
+  "2917409": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2917508": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2917607": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2917706": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2917805": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2917904": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2918001": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2918100": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2918209": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2918308": {
+    "codigo": "22",
+    "nome": "Médio Rio de Contas"
+  },
+  "2918357": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2918407": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2918456": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2918506": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2918555": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2918605": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2918704": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2918753": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2918803": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2918902": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2919009": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2919058": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2919108": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2919157": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2919207": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2919306": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2919405": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2919504": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2919553": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2919603": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2919702": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2919801": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2919900": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2919926": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2919959": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2920007": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2920106": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2920205": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2920304": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2920403": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2920452": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2920502": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2920601": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2920700": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2920809": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2920908": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2921005": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2921054": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2921104": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2921203": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2921302": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2921401": {
+    "codigo": "16",
+    "nome": "Piemonte da Diamantina"
+  },
+  "2921450": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2921500": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2921609": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2921708": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2921807": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2921906": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2922003": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2922052": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2922102": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2922201": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2922250": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2922300": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2922409": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2922508": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2922607": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2922656": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2922706": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2922730": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2922755": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2922805": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2922854": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2922904": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2923001": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2923035": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2923050": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2923100": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2923209": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2923308": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2923357": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2923407": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2923506": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2923605": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2923704": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2923803": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2923902": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2924009": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2924058": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2924108": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2924207": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2924306": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2924405": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2924504": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2924603": {
+    "codigo": "16",
+    "nome": "Piemonte da Diamantina"
+  },
+  "2924652": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2924678": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2924702": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2924801": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2924900": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2925006": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2925105": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2925204": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2925253": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2925303": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2925402": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2925501": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2925600": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2925709": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2925758": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2925808": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2925907": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2925931": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2925956": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2926004": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2926103": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2926202": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2926301": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2926400": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2926509": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2926608": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2926657": {
+    "codigo": "8",
+    "nome": "Médio Sudoeste da Bahia"
+  },
+  "2926707": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2926806": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2926905": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2927002": {
+    "codigo": "18",
+    "nome": "Litoral Norte e Agreste Baiano"
+  },
+  "2927101": {
+    "codigo": "24",
+    "nome": "Itaparica"
+  },
+  "2927200": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2927309": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2927408": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2927507": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2927606": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2927705": {
+    "codigo": "27",
+    "nome": "Costa do Descobrimento"
+  },
+  "2927804": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2927903": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2928000": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2928059": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2928109": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2928208": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2928307": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2928406": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2928505": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2928604": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2928703": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2928802": {
+    "codigo": "14",
+    "nome": "Piemonte do Paraguaçu"
+  },
+  "2928901": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2928950": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2929008": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2929057": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2929107": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2929206": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2929255": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2929305": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2929354": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2929370": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2929404": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2929503": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2929602": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2929701": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2929750": {
+    "codigo": "21",
+    "nome": "Recôncavo"
+  },
+  "2929800": {
+    "codigo": "16",
+    "nome": "Piemonte da Diamantina"
+  },
+  "2929909": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2930006": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2930105": {
+    "codigo": "25",
+    "nome": "Piemonte Norte do Itapicuru"
+  },
+  "2930154": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2930204": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2930303": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2930402": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2930501": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2930600": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2930709": {
+    "codigo": "26",
+    "nome": "Metropolitano de Salvador"
+  },
+  "2930758": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2930766": {
+    "codigo": "17",
+    "nome": "Semiárido Nordeste II"
+  },
+  "2930774": {
+    "codigo": "10",
+    "nome": "Sertão do São Francisco"
+  },
+  "2930808": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2930907": {
+    "codigo": "11",
+    "nome": "Bacia do Rio Grande"
+  },
+  "2931004": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2931053": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2931103": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2931202": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2931301": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2931350": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2931400": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2931509": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2931608": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2931707": {
+    "codigo": "19",
+    "nome": "Portal do Sertão"
+  },
+  "2931806": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2931905": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2932002": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2932101": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2932200": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2932309": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2932408": {
+    "codigo": "1",
+    "nome": "Irecê"
+  },
+  "2932457": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2932507": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2932606": {
+    "codigo": "13",
+    "nome": "Sertão Produtivo"
+  },
+  "2932705": {
+    "codigo": "5",
+    "nome": "Litoral Sul"
+  },
+  "2932804": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2932903": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2933000": {
+    "codigo": "4",
+    "nome": "Sisal"
+  },
+  "2933059": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2933109": {
+    "codigo": "15",
+    "nome": "Bacia do Jacuípe"
+  },
+  "2933158": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2933174": {
+    "codigo": "9",
+    "nome": "Vale do Jiquiriçá"
+  },
+  "2933208": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2933257": {
+    "codigo": "7",
+    "nome": "Extremo Sul"
+  },
+  "2933307": {
+    "codigo": "20",
+    "nome": "Sudoeste Baiano"
+  },
+  "2933406": {
+    "codigo": "3",
+    "nome": "Chapada Diamantina"
+  },
+  "2933455": {
+    "codigo": "2",
+    "nome": "Velho Chico"
+  },
+  "2933505": {
+    "codigo": "6",
+    "nome": "Baixo Sul"
+  },
+  "2933604": {
+    "codigo": "1",
+    "nome": "Irecê"
+  }
+}

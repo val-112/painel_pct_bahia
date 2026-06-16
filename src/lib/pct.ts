@@ -8,6 +8,8 @@ export interface PctRecord {
   tipo: string;
   municipio: string;
   codigo: string;
+  territorio: string;
+  territorioCodigo: string;
   numRegistro: string;
   dataRegistro: string;
   etnia: string;
@@ -21,6 +23,7 @@ export interface PctRecord {
 
 export interface Filters {
   municipio: string | null; // codigo
+  territorio: string | null;
   rpga: string | null;
   tipo: string | null;
   fonte: string | null;
@@ -30,6 +33,7 @@ export interface Filters {
 
 export const emptyFilters: Filters = {
   municipio: null,
+  territorio: null,
   rpga: null,
   tipo: null,
   fonte: null,
@@ -39,11 +43,16 @@ export const emptyFilters: Filters = {
 
 type GeoJSONProperty = string | number | boolean | null | undefined;
 
+type GeoJSONGeometry = {
+  type: string;
+  coordinates?: unknown;
+};
+
 export type GeoJSON = {
   type: "FeatureCollection";
   features: Array<{
     type: "Feature";
-    geometry: unknown;
+    geometry: GeoJSONGeometry;
     properties: Record<string, GeoJSONProperty>;
   }>;
 };
@@ -51,28 +60,47 @@ export type GeoJSON = {
 export interface PctData {
   base: PctRecord[];
   municipios: GeoJSON;
+  territorios: GeoJSON;
   rpga: GeoJSON;
   poligonal: GeoJSON;
   pontos: GeoJSON;
 }
 
+type MunicipioTerritorioIndex = Record<string, { codigo: string; nome: string }>;
+
 const publicUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 export async function loadPctData(): Promise<PctData> {
-  const [base, municipios, rpga, poligonal, pontos] = await Promise.all([
-    fetch(publicUrl("data/base.json")).then((r) => r.json()),
-    fetch(publicUrl("data/municipios.geojson")).then((r) => r.json()),
-    fetch(publicUrl("data/rpga.geojson")).then((r) => r.json()),
-    fetch(publicUrl("data/poligonal.geojson")).then((r) => r.json()),
-    fetch(publicUrl("data/pontos.geojson")).then((r) => r.json()),
-  ]);
-  return { base, municipios, rpga, poligonal, pontos };
+  const [baseRaw, municipios, territorios, municipioTerritorio, rpga, poligonal, pontos] =
+    await Promise.all([
+      fetch(publicUrl("data/base.json")).then((r) => r.json()),
+      fetch(publicUrl("data/municipios.geojson")).then((r) => r.json()),
+      fetch(publicUrl("data/territorios-identidade.geojson")).then((r) => r.json()),
+      fetch(publicUrl("data/municipio-territorio.json")).then((r) => r.json()),
+      fetch(publicUrl("data/rpga.geojson")).then((r) => r.json()),
+      fetch(publicUrl("data/poligonal.geojson")).then((r) => r.json()),
+      fetch(publicUrl("data/pontos.geojson")).then((r) => r.json()),
+    ]);
+  const territoryByMunicipio = municipioTerritorio as MunicipioTerritorioIndex;
+  const base = (baseRaw as Array<Omit<PctRecord, "territorio" | "territorioCodigo">>).map(
+    (record) => {
+      const territorio = territoryByMunicipio[record.codigo];
+      return {
+        ...record,
+        territorio: territorio?.nome ?? "Não atribuída",
+        territorioCodigo: territorio?.codigo ?? "",
+      };
+    },
+  );
+
+  return { base, municipios, territorios, rpga, poligonal, pontos };
 }
 
 export function applyFilters(records: PctRecord[], f: Filters): PctRecord[] {
   const q = f.search.trim().toLowerCase();
   return records.filter((r) => {
     if (f.municipio && r.codigo !== f.municipio) return false;
+    if (f.territorio && r.territorio !== f.territorio) return false;
     if (f.rpga && r.rpga !== f.rpga) return false;
     if (f.tipo && r.tipo !== f.tipo) return false;
     if (f.fonte && r.fonte !== f.fonte) return false;
@@ -82,6 +110,7 @@ export function applyFilters(records: PctRecord[], f: Filters): PctRecord[] {
       !(
         r.nome.toLowerCase().includes(q) ||
         r.municipio.toLowerCase().includes(q) ||
+        r.territorio.toLowerCase().includes(q) ||
         r.id.toLowerCase().includes(q)
       )
     )
@@ -164,6 +193,45 @@ export function aggregateByRpga(records: PctRecord[]): Map<string, RpgaAgg> {
   return m;
 }
 
+export interface TerritorioAgg {
+  codigo: string;
+  nome: string;
+  total: number;
+  poligono: number;
+  ponto: number;
+  municipioOnly: number;
+  municipios: Set<string>;
+  byTipo: Record<string, number>;
+}
+
+export function aggregateByTerritorio(records: PctRecord[]): Map<string, TerritorioAgg> {
+  const m = new Map<string, TerritorioAgg>();
+  for (const r of records) {
+    const nome = r.territorio || "Não atribuída";
+    let a = m.get(nome);
+    if (!a) {
+      a = {
+        codigo: r.territorioCodigo,
+        nome,
+        total: 0,
+        poligono: 0,
+        ponto: 0,
+        municipioOnly: 0,
+        municipios: new Set(),
+        byTipo: {},
+      };
+      m.set(nome, a);
+    }
+    a.total++;
+    if (r.espacial === "Polígono") a.poligono++;
+    else if (r.espacial === "Ponto") a.ponto++;
+    else a.municipioOnly++;
+    a.municipios.add(r.codigo);
+    a.byTipo[r.tipo] = (a.byTipo[r.tipo] || 0) + 1;
+  }
+  return m;
+}
+
 export function countBy<T extends string>(
   records: PctRecord[],
   key: (r: PctRecord) => T,
@@ -197,6 +265,17 @@ const CHORO_STEPS = ["#cfe3f0", "#a3c9e3", "#73aad2", "#4988bd", "#2f679f", "#1f
 export const RPGA_CHORO_ZERO = "#e7e2d8";
 const RPGA_STEPS = ["#f7ddc2", "#eebd92", "#e29c64", "#d27d3e", "#bb5f29", "#99481f", "#763516"];
 
+export const TERRITORIO_CHORO_ZERO = "#e7e2d8";
+const TERRITORIO_STEPS = [
+  "#d7ece8",
+  "#afd8d2",
+  "#83c0ba",
+  "#54a59f",
+  "#2f8a86",
+  "#176f6c",
+  "#0b5654",
+];
+
 // Fixed, cartographically legible class breaks. Highly skewed data (1 → 147),
 // so equal-interval hides low counts; these "nice" breaks keep them visible.
 const BREAK_TEMPLATE = [1, 4, 9, 24, 49, 99];
@@ -222,7 +301,11 @@ export function rpgaChoroColor(value: number, buckets: number[]): string {
   return colorFromSteps(value, buckets, RPGA_STEPS, RPGA_CHORO_ZERO);
 }
 
-export { CHORO_STEPS, RPGA_STEPS };
+export function territorioChoroColor(value: number, buckets: number[]): string {
+  return colorFromSteps(value, buckets, TERRITORIO_STEPS, TERRITORIO_CHORO_ZERO);
+}
+
+export { CHORO_STEPS, RPGA_STEPS, TERRITORIO_STEPS };
 
 // Brand-aligned categorical palette: navy, orange, gold, light blue, teal…
 export const TIPO_COLORS = [
@@ -241,6 +324,7 @@ export const TIPO_COLORS = [
 // Layer styling colors (kept in one place for legend + map consistency).
 export const LAYER_COLORS = {
   rpga: "#c79a3a", // gold dashed outline
+  territorio: "#17827d", // teal territory identity outline
   poly: "#c2632f", // orange polygons
   ponto: "#1b4f7e", // deep blue points
   municipio: "#6f7f88", // subtle municipal reference outline

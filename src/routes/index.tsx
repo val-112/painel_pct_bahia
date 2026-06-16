@@ -4,6 +4,7 @@ import { lazy, Suspense, useMemo, useState } from "react";
 import {
   aggregateByMunicipio,
   aggregateByRpga,
+  aggregateByTerritorio,
   applyFilters,
   emptyFilters,
   loadPctData,
@@ -23,6 +24,7 @@ const MapPanel = lazy(() =>
 );
 const publicUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 const bannerUrl = publicUrl("images/banner.png");
+const panelLogoUrl = publicUrl("images/painel-logo.png");
 const logoUrl = publicUrl("images/rioz-logo.jpg");
 
 export const Route = createFileRoute("/")({
@@ -32,12 +34,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Dashboard geoespacial interativo dos Povos e Comunidades Tradicionais (PCT) da Bahia: mapa, filtros, KPIs, gráficos e tabela.",
+          "Dashboard geoespacial interativo dos Povos e Comunidades Tradicionais (PCT) da Bahia: mapa, filtros, KPIs, gráficos, municípios, Territórios de Identidade e RPGAs.",
       },
       { property: "og:title", content: "Painel de Comunidades Tradicionais da Bahia" },
       {
         property: "og:description",
-        content: "Visualização territorial interativa dos PCT da Bahia.",
+        content:
+          "Visualização territorial interativa dos PCT da Bahia por município, Território de Identidade e RPGA.",
       },
     ],
   }),
@@ -57,6 +60,7 @@ function Dashboard() {
     poly: true,
     pontos: true,
     muniOutline: true,
+    territorioOutline: false,
     rpgaOutline: false,
     metric: "total",
   });
@@ -65,6 +69,7 @@ function Dashboard() {
 
   const filtered = useMemo(() => (data ? applyFilters(data.base, filters) : []), [data, filters]);
   const muniAgg = useMemo(() => aggregateByMunicipio(filtered), [filtered]);
+  const territorioAgg = useMemo(() => aggregateByTerritorio(filtered), [filtered]);
   const rpgaAgg = useMemo(() => aggregateByRpga(filtered), [filtered]);
   const filteredIds = useMemo(() => new Set(filtered.map((r) => r.id)), [filtered]);
 
@@ -78,6 +83,7 @@ function Dashboard() {
     municipio: filters.municipio
       ? (muniNameByCode.get(filters.municipio) ?? filters.municipio)
       : null,
+    territorio: filters.territorio,
     rpga: filters.rpga,
     tipo: filters.tipo,
     fonte: filters.fonte,
@@ -103,8 +109,12 @@ function Dashboard() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-card/70 via-card/30 to-card/55" />
         <div className="relative mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-6 sm:py-7">
-          <h1 className="min-w-0 max-w-full text-xl font-extrabold leading-tight tracking-tight text-foreground drop-shadow-[0_1px_2px_rgba(255,255,255,0.7)] sm:text-2xl lg:text-[1.75rem]">
-            Painel de Comunidades Tradicionais da Bahia
+          <h1 className="min-w-0 max-w-full flex-1">
+            <img
+              src={panelLogoUrl}
+              alt="Painel de Comunidades Tradicionais da Bahia"
+              className="h-auto max-h-24 w-full max-w-[760px] rounded-md bg-white/95 p-2 shadow-sm ring-1 ring-white/70"
+            />
           </h1>
 
           <div className="flex shrink-0 flex-wrap items-center gap-2.5">
@@ -143,6 +153,7 @@ function Dashboard() {
               filters={chipValues}
               labels={{
                 municipio: "Município",
+                territorio: "Território de identidade",
                 rpga: "RPGA",
                 tipo: "Tipo",
                 fonte: "Fonte",
@@ -184,10 +195,12 @@ function Dashboard() {
                   <MapPanel
                     data={data}
                     muniAgg={muniAgg}
+                    territorioAgg={territorioAgg}
                     rpgaAgg={rpgaAgg}
                     filteredIds={filteredIds}
                     layers={layers}
                     selectedMuni={filters.municipio}
+                    selectedTerritorio={filters.territorio}
                     selectedRpga={filters.rpga}
                     focus={focus}
                     onMuniClick={(c) =>
@@ -195,6 +208,12 @@ function Dashboard() {
                     }
                     onRpgaClick={(n) =>
                       setFilters((f) => ({ ...f, rpga: f.rpga === n ? null : n }))
+                    }
+                    onTerritorioClick={(n) =>
+                      setFilters((f) => ({
+                        ...f,
+                        territorio: f.territorio === n ? null : n,
+                      }))
                     }
                   />
                 </Suspense>
@@ -208,7 +227,7 @@ function Dashboard() {
             <footer className="space-y-1 py-4 text-center text-xs text-muted-foreground">
               <div>
                 Dados: base analítica PCT · {data.base.length.toLocaleString("pt-BR")} registros ·
-                camadas municipais, RPGA, polígonos e pontos.
+                camadas municipais, territórios de identidade, RPGA, polígonos e pontos.
               </div>
               <div className="font-medium text-foreground/80">
                 © Valdenir Barbosa | Instituto Rios e Raízes | v1.0

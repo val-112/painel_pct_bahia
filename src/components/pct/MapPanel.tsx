@@ -14,11 +14,13 @@ import {
   choroBuckets,
   choroColor,
   rpgaChoroColor,
+  territorioChoroColor,
   LAYER_COLORS,
   METRIC_LABEL,
   type MetricKey,
   type MuniAgg,
   type RpgaAgg,
+  type TerritorioAgg,
   type PctData,
   type PctRecord,
 } from "@/lib/pct";
@@ -28,13 +30,16 @@ import { Legend } from "./Legend";
 interface Props {
   data: PctData;
   muniAgg: Map<string, MuniAgg>;
+  territorioAgg: Map<string, TerritorioAgg>;
   rpgaAgg: Map<string, RpgaAgg>;
   filteredIds: Set<string>;
   layers: LayerState;
   selectedMuni: string | null;
+  selectedTerritorio: string | null;
   selectedRpga: string | null;
   focus: PctRecord | null;
   onMuniClick: (codigo: string) => void;
+  onTerritorioClick: (nome: string) => void;
   onRpgaClick: (nome: string) => void;
 }
 
@@ -85,18 +90,23 @@ function FocusController({ data, focus }: { data: PctData; focus: PctRecord | nu
 export function MapPanel({
   data,
   muniAgg,
+  territorioAgg,
   rpgaAgg,
   filteredIds,
   layers,
   selectedMuni,
+  selectedTerritorio,
   selectedRpga,
   focus,
   onMuniClick,
+  onTerritorioClick,
   onRpgaClick,
 }: Props) {
   const showMuniChoro = layers.mode === "muni";
+  const showTerritorioChoro = layers.mode === "territorio";
   const showRpgaChoro = layers.mode === "rpga";
   const showRpgaOutline = layers.mode === "geo" && layers.rpgaOutline;
+  const showTerritorioOutline = layers.mode === "geo" && layers.territorioOutline;
   const showPoly = layers.mode === "geo" && layers.poly;
   const showPontos = layers.mode === "geo" && layers.pontos;
   const showMuniOutline = layers.mode === "geo" && layers.muniOutline;
@@ -113,7 +123,14 @@ export function MapPanel({
     return mx;
   }, [rpgaAgg]);
 
+  const territorioMax = useMemo(() => {
+    let mx = 0;
+    for (const a of territorioAgg.values()) mx = Math.max(mx, a.total);
+    return mx;
+  }, [territorioAgg]);
+
   const buckets = useMemo(() => choroBuckets(maxVal), [maxVal]);
+  const territorioBuckets = useMemo(() => choroBuckets(territorioMax), [territorioMax]);
   const rpgaBuckets = useMemo(() => choroBuckets(rpgaMax), [rpgaMax]);
 
   const polyFC = useMemo(
@@ -143,15 +160,39 @@ export function MapPanel({
     const code = feature.properties.codigo;
     return {
       color: selectedMuni === code ? "#3f4f58" : LAYER_COLORS.municipio,
-      weight: selectedMuni === code ? 1.4 : 0.7,
-      opacity: selectedMuni === code ? 0.9 : 0.55,
-      fill: false,
-      fillOpacity: 0,
-      interactive: false,
+      weight: selectedMuni === code ? 1.8 : 0.8,
+      opacity: selectedMuni === code ? 0.95 : 0.58,
+      fillColor: LAYER_COLORS.municipio,
+      fillOpacity: selectedMuni === code ? 0.08 : 0.015,
+    };
+  };
+
+  const territorioStyle = (feature: any) => {
+    const nome = feature.properties.nomti;
+    const v = territorioAgg.get(nome)?.total ?? 0;
+    return {
+      fillColor: territorioChoroColor(v, territorioBuckets),
+      fillOpacity: 0.85,
+      color: selectedTerritorio === nome ? "#0b5654" : "#74aaa6",
+      weight: selectedTerritorio === nome ? 3 : 0.9,
+    };
+  };
+
+  const territorioOutlineStyle = (feature: any) => {
+    const nome = feature.properties.nomti;
+    return {
+      color: selectedTerritorio === nome ? "#0b5654" : LAYER_COLORS.territorio,
+      weight: selectedTerritorio === nome ? 3 : 1.6,
+      opacity: selectedTerritorio === nome ? 0.95 : 0.65,
+      fillColor: LAYER_COLORS.territorio,
+      fillOpacity: selectedTerritorio === nome ? 0.1 : 0.025,
+      dashArray: "5 3",
     };
   };
 
   const choroKey = `choro-${layers.metric}-${maxVal}-${filteredIds.size}-${selectedMuni}`;
+  const territorioChoroKey = `territoriochoro-${territorioMax}-${filteredIds.size}-${selectedTerritorio}`;
+  const territorioKey = `territorio-${selectedTerritorio}`;
   const rpgaChoroKey = `rpgachoro-${rpgaMax}-${filteredIds.size}-${selectedRpga}`;
   const rpgaKey = `rpga-${selectedRpga}`;
   const polyKey = `poly-${polyFC.features.length}`;
@@ -207,6 +248,30 @@ export function MapPanel({
           />
         )}
 
+        {/* Territory Identity choropleth */}
+        {showTerritorioChoro && (
+          <GeoJSON
+            key={territorioChoroKey}
+            data={data.territorios as any}
+            style={territorioStyle as any}
+            onEachFeature={(feature: any, layer: any) => {
+              const nome = feature.properties.nomti;
+              layer.on("click", () => onTerritorioClick(nome));
+              const a = territorioAgg.get(nome);
+              const html = `<div class="pct-popup"><h4>${nome}</h4>
+                <div class="row"><span>Código</span><span>${feature.properties.codti ?? "—"}</span></div>
+                <div class="row"><span>Total geral</span><span>${a?.total ?? 0}</span></div>
+                <div class="row"><span>Com poligonal</span><span>${a?.poligono ?? 0}</span></div>
+                <div class="row"><span>Somente ponto</span><span>${a?.ponto ?? 0}</span></div>
+                <div class="row"><span>Somente município</span><span>${a?.municipioOnly ?? 0}</span></div>
+                <div class="row"><span>Municípios</span><span>${a?.municipios.size ?? 0}</span></div>
+                <div class="row"><span>Principais tipos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
+                <div style="margin-top:6px;font-size:11px;color:${LAYER_COLORS.territorio};font-weight:600">Clique para filtrar por este território</div></div>`;
+              layer.bindPopup(html, { maxWidth: 280 });
+            }}
+          />
+        )}
+
         {/* RPGA choropleth (Dados por RPGA mode) */}
         {showRpgaChoro && (
           <GeoJSON
@@ -235,6 +300,48 @@ export function MapPanel({
                 <div class="row"><span>Principais tipos</span><span>${a ? topEntries(a.byTipo) : "—"}</span></div>
                 <div style="margin-top:6px;font-size:11px;color:#bb5f29;font-weight:600">Clique para filtrar por esta RPGA</div></div>`;
               layer.bindPopup(html, { maxWidth: 280 });
+            }}
+          />
+        )}
+
+        {/* Municipal reference boundaries */}
+        {showMuniOutline && (
+          <GeoJSON
+            key={muniOutlineKey}
+            data={data.municipios as any}
+            style={muniOutlineStyle as any}
+            onEachFeature={(feature: any, layer: any) => {
+              const code = feature.properties.codigo;
+              layer.on("click", () => onMuniClick(code));
+              const a = muniAgg.get(code);
+              layer.bindPopup(
+                `<div class="pct-popup"><h4>${feature.properties.municipio}</h4>
+                  <div class="row"><span>Código</span><span>${code}</span></div>
+                  <div class="row"><span>Total geral</span><span>${a?.total ?? 0}</span></div>
+                  <div style="margin-top:6px;font-size:11px;color:${LAYER_COLORS.municipio};font-weight:600">Clique para filtrar este município</div></div>`,
+                { maxWidth: 280 },
+              );
+            }}
+          />
+        )}
+
+        {/* Territory Identity outlines (geo mode toggle) */}
+        {showTerritorioOutline && (
+          <GeoJSON
+            key={territorioKey}
+            data={data.territorios as any}
+            style={territorioOutlineStyle as any}
+            onEachFeature={(feature: any, layer: any) => {
+              const nome = feature.properties.nomti;
+              layer.on("click", () => onTerritorioClick(nome));
+              const a = territorioAgg.get(nome);
+              layer.bindPopup(
+                `<div class="pct-popup"><h4>${nome}</h4>
+                  <div class="row"><span>Código</span><span>${feature.properties.codti ?? "—"}</span></div>
+                  <div class="row"><span>Total geral</span><span>${a?.total ?? 0}</span></div>
+                  <div style="margin-top:6px;font-size:11px;color:${LAYER_COLORS.territorio};font-weight:600">Clique para filtrar por este território</div></div>`,
+                { maxWidth: 280 },
+              );
             }}
           />
         )}
@@ -312,25 +419,17 @@ export function MapPanel({
             );
           })}
 
-        {/* Municipal reference boundaries */}
-        {showMuniOutline && (
-          <GeoJSON
-            key={muniOutlineKey}
-            data={data.municipios as any}
-            style={muniOutlineStyle as any}
-            interactive={false}
-          />
-        )}
-
         <FocusController data={data} focus={focus} />
       </MapContainer>
 
       <Legend
         mode={layers.mode}
         maxVal={maxVal}
+        territorioMax={territorioMax}
         rpgaMax={rpgaMax}
         metric={layers.metric}
         showRpga={showRpgaOutline}
+        showTerritorio={showTerritorioOutline}
         showPoly={showPoly}
         showPontos={showPontos}
         showMuniOutline={showMuniOutline}
@@ -339,9 +438,11 @@ export function MapPanel({
       <div className="pointer-events-none absolute left-1/2 top-3 z-[500] max-w-[60%] -translate-x-1/2 rounded-md bg-card/90 px-3 py-1 text-center text-xs font-semibold text-foreground shadow backdrop-blur">
         {showMuniChoro
           ? `${METRIC_LABEL[layers.metric]} por município`
-          : showRpgaChoro
-            ? "Total de comunidades por RPGA"
-            : "Localização dos territórios"}
+          : showTerritorioChoro
+            ? "Total de comunidades por Território de Identidade"
+            : showRpgaChoro
+              ? "Total de comunidades por RPGA"
+              : "Localização dos territórios"}
       </div>
     </div>
   );

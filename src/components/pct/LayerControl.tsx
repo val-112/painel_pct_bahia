@@ -1,14 +1,15 @@
-import { METRIC_LABEL, type MetricKey } from "@/lib/pct";
+import { LAYER_COLORS, METRIC_LABEL, type MetricKey } from "@/lib/pct";
 import { Layers3, MapPinned, Waves, Map as MapIcon, Info } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-export type MapMode = "geo" | "muni" | "rpga";
+export type MapMode = "geo" | "muni" | "territorio" | "rpga";
 
 export interface LayerState {
   mode: MapMode;
   poly: boolean;
   pontos: boolean;
   muniOutline: boolean;
+  territorioOutline: boolean;
   rpgaOutline: boolean;
   metric: MetricKey;
 }
@@ -57,10 +58,16 @@ const MODES: Array<{ id: MapMode; label: string; icon: LucideIcon; hint: string 
     hint: "Escala de cores por município com o total geral de comunidades (polígono, ponto e somente município).",
   },
   {
+    id: "territorio",
+    label: "Dados por território de identidade",
+    icon: MapIcon,
+    hint: "Escala de cores por Território de Identidade com o total geral de comunidades.",
+  },
+  {
     id: "rpga",
     label: "Dados por RPGA",
     icon: Waves,
-    hint: "Escala de cores por RPGA/bacia com o total geral de comunidades. Clique em uma RPGA para detalhes.",
+    hint: "Escala de cores por RPGA (Região de Planejamento e Gestão das Águas) com o total geral de comunidades.",
   },
 ];
 
@@ -123,13 +130,19 @@ export function LayerControl({ layers, setLayers }: Props) {
           />
           <Toggle
             label="Limites municipais"
-            dot="#6f7f88"
+            dot={LAYER_COLORS.municipio}
             checked={layers.muniOutline}
             onChange={(v) => setLayers({ ...layers, muniOutline: v })}
           />
           <Toggle
+            label="Territórios de identidade"
+            dot={LAYER_COLORS.territorio}
+            checked={layers.territorioOutline}
+            onChange={(v) => setLayers({ ...layers, territorioOutline: v })}
+          />
+          <Toggle
             label="RPGAs / Bacias"
-            dot="#c79a3a"
+            dot={LAYER_COLORS.rpga}
             checked={layers.rpgaOutline}
             onChange={(v) => setLayers({ ...layers, rpgaOutline: v })}
           />

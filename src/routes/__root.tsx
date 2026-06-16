@@ -14,8 +14,12 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 const siteTitle = "Painel de Comunidades Tradicionais da Bahia";
 const siteDescription =
-  "Dashboard geoespacial interativo dos Povos e Comunidades Tradicionais (PCT) da Bahia.";
-const previewImage = `${import.meta.env.BASE_URL}images/banner.png`;
+  "Dashboard geoespacial interativo dos Povos e Comunidades Tradicionais (PCT) da Bahia por município, Território de Identidade e RPGA.";
+const siteUrl = "https://val-112.github.io/painel_pct_bahia/";
+const previewImage = `${siteUrl}images/share-preview.png`;
+const faviconUrl = `${import.meta.env.BASE_URL}images/favicon.png`;
+const favicon32Url = `${import.meta.env.BASE_URL}images/favicon-32.png`;
+const favicon192Url = `${import.meta.env.BASE_URL}images/favicon-192.png`;
 
 function NotFoundComponent() {
   return (
@@ -88,13 +92,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: siteTitle },
       { property: "og:description", content: siteDescription },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: siteUrl },
+      { property: "og:image", content: previewImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: siteTitle },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: siteTitle },
       { name: "twitter:description", content: siteDescription },
-      { property: "og:image", content: previewImage },
       { name: "twitter:image", content: previewImage },
     ],
     links: [
+      {
+        rel: "canonical",
+        href: siteUrl,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: favicon32Url,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: faviconUrl,
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "192x192",
+        href: favicon192Url,
+      },
       {
         rel: "stylesheet",
         href: appCss,

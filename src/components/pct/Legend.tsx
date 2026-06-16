@@ -2,6 +2,7 @@ import {
   choroBuckets,
   choroColor,
   rpgaChoroColor,
+  territorioChoroColor,
   LAYER_COLORS,
   type MetricKey,
   METRIC_LABEL,
@@ -11,9 +12,11 @@ import type { MapMode } from "./LayerControl";
 interface Props {
   mode: MapMode;
   maxVal: number;
+  territorioMax: number;
   rpgaMax: number;
   metric: MetricKey;
   showRpga: boolean;
+  showTerritorio: boolean;
   showPoly: boolean;
   showPontos: boolean;
   showMuniOutline: boolean;
@@ -37,17 +40,23 @@ function buildRanges(buckets: number[], colorFn: (v: number, b: number[]) => str
 export function Legend({
   mode,
   maxVal,
+  territorioMax,
   rpgaMax,
   metric,
   showRpga,
+  showTerritorio,
   showPoly,
   showPontos,
   showMuniOutline,
 }: Props) {
   const showMuniChoro = mode === "muni";
+  const showTerritorioChoro = mode === "territorio";
   const showRpgaChoro = mode === "rpga";
 
   const muniRanges = showMuniChoro ? buildRanges(choroBuckets(maxVal), choroColor) : [];
+  const territorioRanges = showTerritorioChoro
+    ? buildRanges(choroBuckets(territorioMax), territorioChoroColor)
+    : [];
   const rpgaRanges = showRpgaChoro ? buildRanges(choroBuckets(rpgaMax), rpgaChoroColor) : [];
 
   return (
@@ -59,6 +68,25 @@ export function Legend({
           </div>
           <div className="space-y-1">
             {muniRanges.map((r, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span
+                  className="inline-block h-3 w-5 rounded-sm border border-black/10"
+                  style={{ background: r.color }}
+                />
+                <span className="text-muted-foreground">{r.label}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {showTerritorioChoro && (
+        <>
+          <div className="mb-1.5 font-semibold text-foreground">
+            Total de comunidades por Território de Identidade
+          </div>
+          <div className="space-y-1">
+            {territorioRanges.map((r, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span
                   className="inline-block h-3 w-5 rounded-sm border border-black/10"
@@ -88,9 +116,13 @@ export function Legend({
         </>
       )}
 
-      {(showRpga || showPoly || showPontos || showMuniOutline) && (
+      {(showRpga || showTerritorio || showPoly || showPontos || showMuniOutline) && (
         <div
-          className={`space-y-1 ${showMuniChoro || showRpgaChoro ? "mt-2 border-t border-border pt-2" : ""}`}
+          className={`space-y-1 ${
+            showMuniChoro || showTerritorioChoro || showRpgaChoro
+              ? "mt-2 border-t border-border pt-2"
+              : ""
+          }`}
         >
           {showPoly && (
             <div className="flex items-center gap-2">
@@ -117,6 +149,15 @@ export function Legend({
                 style={{ borderColor: LAYER_COLORS.municipio }}
               />
               <span className="text-muted-foreground">Limite municipal</span>
+            </div>
+          )}
+          {showTerritorio && (
+            <div className="flex items-center gap-2">
+              <span
+                className="inline-block h-3 w-5 rounded-sm border-2 bg-transparent"
+                style={{ borderColor: LAYER_COLORS.territorio }}
+              />
+              <span className="text-muted-foreground">Território de identidade</span>
             </div>
           )}
           {showRpga && (

@@ -46,9 +46,11 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
     const muni = new Map<string, string>();
     const tipos = new Set<string>();
     const fontes = new Set<string>();
+    const territorios = new Set<string>();
     const rpgas = new Set<string>();
     for (const r of data.base) {
       muni.set(r.codigo, r.municipio);
+      if (r.territorio) territorios.add(r.territorio);
       if (r.tipo) tipos.add(r.tipo);
       if (r.fonte) fontes.add(r.fonte);
       if (r.rpga) rpgas.add(r.rpga);
@@ -57,9 +59,18 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
       municipios: [...muni.entries()]
         .map(([value, label]) => ({ value, label: `${label}` }))
         .sort((a, b) => a.label.localeCompare(b.label, "pt-BR")),
-      tipos: [...tipos].sort((a, b) => a.localeCompare(b, "pt-BR")).map((v) => ({ value: v, label: v })),
-      fontes: [...fontes].sort((a, b) => a.localeCompare(b, "pt-BR")).map((v) => ({ value: v, label: v })),
-      rpgas: [...rpgas].sort((a, b) => a.localeCompare(b, "pt-BR")).map((v) => ({ value: v, label: v })),
+      tipos: [...tipos]
+        .sort((a, b) => a.localeCompare(b, "pt-BR"))
+        .map((v) => ({ value: v, label: v })),
+      fontes: [...fontes]
+        .sort((a, b) => a.localeCompare(b, "pt-BR"))
+        .map((v) => ({ value: v, label: v })),
+      territorios: [...territorios]
+        .sort((a, b) => a.localeCompare(b, "pt-BR"))
+        .map((v) => ({ value: v, label: v })),
+      rpgas: [...rpgas]
+        .sort((a, b) => a.localeCompare(b, "pt-BR"))
+        .map((v) => ({ value: v, label: v })),
     };
   }, [data.base]);
 
@@ -67,6 +78,7 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
 
   const activeCount =
     (filters.municipio ? 1 : 0) +
+    (filters.territorio ? 1 : 0) +
     (filters.rpga ? 1 : 0) +
     (filters.tipo ? 1 : 0) +
     (filters.fonte ? 1 : 0) +
@@ -88,7 +100,9 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
       </div>
 
       <label className="block">
-        <span className="mb-1 block text-xs font-semibold text-muted-foreground">Buscar comunidade</span>
+        <span className="mb-1 block text-xs font-semibold text-muted-foreground">
+          Buscar comunidade
+        </span>
         <input
           type="text"
           value={filters.search}
@@ -98,10 +112,36 @@ export function FilterPanel({ data, filters, setFilters, onClear }: Props) {
         />
       </label>
 
-      <Select label="Município" value={filters.municipio} options={opts.municipios} onChange={(v) => set({ municipio: v })} />
-      <Select label="RPGA / Bacia" value={filters.rpga} options={opts.rpgas} onChange={(v) => set({ rpga: v })} />
-      <Select label="Tipo de comunidade" value={filters.tipo} options={opts.tipos} onChange={(v) => set({ tipo: v })} />
-      <Select label="Fonte do dado" value={filters.fonte} options={opts.fontes} onChange={(v) => set({ fonte: v })} />
+      <Select
+        label="Município"
+        value={filters.municipio}
+        options={opts.municipios}
+        onChange={(v) => set({ municipio: v })}
+      />
+      <Select
+        label="Território de identidade"
+        value={filters.territorio}
+        options={opts.territorios}
+        onChange={(v) => set({ territorio: v })}
+      />
+      <Select
+        label="RPGA / Bacia"
+        value={filters.rpga}
+        options={opts.rpgas}
+        onChange={(v) => set({ rpga: v })}
+      />
+      <Select
+        label="Tipo de comunidade"
+        value={filters.tipo}
+        options={opts.tipos}
+        onChange={(v) => set({ tipo: v })}
+      />
+      <Select
+        label="Fonte do dado"
+        value={filters.fonte}
+        options={opts.fontes}
+        onChange={(v) => set({ fonte: v })}
+      />
       <Select
         label="Tipo de dado espacial"
         value={filters.espacial}

@@ -13,6 +13,7 @@ const COLS: Array<{ key: SortKey; label: string }> = [
   { key: "nome", label: "Comunidade" },
   { key: "tipo", label: "Tipo" },
   { key: "municipio", label: "Município" },
+  { key: "territorio", label: "Território de identidade" },
   { key: "codigo", label: "Cód. Mun." },
   { key: "rpga", label: "RPGA" },
   { key: "fonte", label: "Fonte" },

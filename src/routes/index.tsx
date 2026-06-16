@@ -24,7 +24,7 @@ const MapPanel = lazy(() =>
 );
 const publicUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 const bannerUrl = publicUrl("images/banner.png");
-const panelLogoUrl = publicUrl("images/painel-logo.png");
+const panelLogoUrl = publicUrl("images/painel-logo-header.png");
 const logoUrl = publicUrl("images/rioz-logo.jpg");
 
 export const Route = createFileRoute("/")({
@@ -108,12 +108,12 @@ function Dashboard() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-card/70 via-card/30 to-card/55" />
-        <div className="relative mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-6 sm:py-7">
-          <h1 className="min-w-0 max-w-full flex-1">
+        <div className="relative mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4 sm:py-5">
+          <h1 className="min-w-[320px] max-w-full flex-1">
             <img
               src={panelLogoUrl}
               alt="Painel de Comunidades Tradicionais da Bahia"
-              className="h-auto max-h-24 w-full max-w-[760px] rounded-md bg-white/95 p-2 shadow-sm ring-1 ring-white/70"
+              className="h-auto w-full max-w-[740px] object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.85)]"
             />
           </h1>
 

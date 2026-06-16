@@ -96,6 +96,7 @@ Arquivos atuais:
 
 - `banner.png`: faixa superior do painel.
 - `painel-logo.png`: identidade visual principal do painel.
+- `painel-logo-header.png`: identidade visual recortada para o cabecalho.
 - `share-preview.png`: imagem de previsualizacao para compartilhamento do link.
 - `favicon.png`, `favicon-32.png`, `favicon-192.png`, `favicon-512.png`: icones do painel.
 - `rioz-logo.jpg`: logo do Instituto Rios e Raizes.
